@@ -7,6 +7,7 @@ const form = document.getElementById("terminalForm");
 function print(text, speed = 15) {
 return new Promise((resolve) => {
 const div = document.createElement("div");
+div.style.marginTop = "6px"; // spacing
 terminal.appendChild(div);
 
 let i = 0;
@@ -57,21 +58,30 @@ await print("0xsaurav-exe");
 await print("Cybersecurity Trainee focused on VAPT and penetration testing.");
 
 } else if (cmd === "projects") {
-await loading("Scanning projects", 1200);
-await print("Projects:");
-await print("- Network Enumeration Lab");
-await print("- Linux Privilege Escalation");
-await print("- Web Application Security Testing");
+await loading("[+] Scanning projects", 1200);
 
+await print(" ");
+await print("=== Projects ===");
+
+await print("• Network Enumeration Lab");
+await print("• Linux Privilege Escalation");
+await print("• Web Application Security Testing");
+
+await print(" ");
+}
 } else if (cmd === "contact") {
-await loading("Fetching contact", 1000);
-await print("Contact:");
+await loading("[+] Fetching contact", 1000);
+
+await print(" ");
+await print("=== Contact ===");
+
 await print("LinkedIn: linkedin.com/in/saurav-saini-eh");
 await print("TryHackMe: tryhackme.com/p/KillerSourav");
 await print("GitHub: github.com/0xsaurav-exe");
-await print("Gmail: sauravsaini31609@gmail.com");
+await print("Email: sauravsaini31609@gmail.com");
 
-} else if (cmd === "clear") {
+await print(" ");
+}} else if (cmd === "clear") {
 const header = document.getElementById("terminalHeader");
 terminal.innerHTML = "";
 terminal.appendChild(header);
