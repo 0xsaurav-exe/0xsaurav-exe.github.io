@@ -3,11 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
 const terminal = document.getElementById("terminal");
 const input = document.getElementById("commandInput");
 
-if (!terminal || !input) {
-console.error("Terminal or input not found");
-return;
-}
-
 function printLine(text) {
 const div = document.createElement("div");
 div.className = "line";
@@ -46,7 +41,7 @@ div.innerHTML = "<br>";
 terminal.appendChild(div);
 }
 
-function loading(text = "Scanning", duration = 1000) {
+function loading(text, duration) {
 return new Promise((resolve) => {
 const div = document.createElement("div");
 div.className = "output";
@@ -74,46 +69,39 @@ async function runCommand(cmd) {
 printLine("root@0xsaurav-exe:~$ " + cmd);
 
 ```
-switch (cmd) {
+if (cmd === "whoami") {
+  await typeOutput("0xsaurav-exe");
 
-  case "whoami":
-    await typeOutput("0xsaurav-exe");
-    break;
+} else if (cmd === "about") {
+  await typeOutput("Cybersecurity Trainee focused on VAPT and penetration testing.");
 
-  case "about":
-    await typeOutput("Cybersecurity Trainee focused on VAPT and penetration testing.");
-    break;
+} else if (cmd === "projects") {
+  await loading("Loading projects", 1200);
+  await typeOutput("Projects:");
+  await typeOutput("-------------------------");
+  await typeOutput("• Network Enumeration Lab");
+  await typeOutput("• Linux Privilege Escalation");
+  await typeOutput("• Web Application Security Testing");
+  await typeOutput("• Steganography Analysis");
 
-  case "projects":
-    await loading("Loading projects", 1200);
-    await typeOutput("Projects:");
-    await typeOutput("-------------------------");
-    await typeOutput("• Network Enumeration Lab");
-    await typeOutput("• Linux Privilege Escalation");
-    await typeOutput("• Web Application Security Testing");
-    await typeOutput("• Steganography Analysis");
-    break;
+} else if (cmd === "contact") {
+  await loading("Fetching contact", 1000);
+  await typeOutput("Contact:");
+  await typeOutput("-------------------------");
+  await typeOutput("LinkedIn: linkedin.com/in/saurav-saini-eh");
+  await typeOutput("TryHackMe: tryhackme.com/p/KillerSourav");
+  await typeOutput("GitHub: github.com/0xsaurav-exe");
+  await typeOutput("Email: sauravsaini31609@gmail.com");
 
-  case "contact":
-    await loading("Fetching contact", 1000);
-    await typeOutput("Contact:");
-    await typeOutput("-------------------------");
-    await typeOutput("LinkedIn: linkedin.com/in/saurav-saini-eh");
-    await typeOutput("TryHackMe: tryhackme.com/p/KillerSourav");
-    await typeOutput("GitHub: github.com/0xsaurav-exe");
-    await typeOutput("Email: sauravsaini31609@gmail.com");
-    break;
+} else if (cmd === "clear") {
+  terminal.innerHTML = "";
+  return;
 
-  case "clear":
-    terminal.innerHTML = "";
-    return;
-
-  default:
-    await typeOutput("Command not found");
+} else {
+  await typeOutput("Command not found");
 }
 
 space();
-window.scrollTo(0, document.body.scrollHeight);
 ```
 
 }
@@ -129,8 +117,8 @@ input.value = "";
 }
 });
 
-document.querySelectorAll(".command-link").forEach(el => {
-el.addEventListener("click", () => {
+document.querySelectorAll(".command-link").forEach(function (el) {
+el.addEventListener("click", function () {
 runCommand(el.innerText);
 });
 });
