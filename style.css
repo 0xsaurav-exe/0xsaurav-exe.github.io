@@ -2,33 +2,19 @@ body {
 background-color: #000814;
 color: #00ff9f;
 font-family: monospace;
+font-size: 18px;   /* increased font */
 margin: 0;
 padding: 20px;
-font-size: 18px;
-
 }
 
-/* terminal */
 #terminal {
 max-width: 900px;
 }
-
-/* glow */
 
 * {
   text-shadow: 0 0 5px #00ff9f;
   }
 
-/* text lines */
-.line {
-white-space: nowrap;
-}
-
-.output {
-margin-left: 5px;
-}
-
-/* input */
 .input-line {
 display: flex;
 align-items: center;
@@ -36,7 +22,6 @@ align-items: center;
 
 .prompt {
 margin-right: 8px;
-white-space: nowrap;
 }
 
 input {
@@ -44,12 +29,11 @@ background: transparent;
 border: none;
 color: #00ff9f;
 font-family: monospace;
-font-size: 16px;
+font-size: 18px;
 outline: none;
 width: 100%;
 }
 
-/* cursor */
 .cursor {
 width: 8px;
 height: 16px;
@@ -61,7 +45,6 @@ animation: blink 1s infinite;
 50% { opacity: 0; }
 }
 
-/* clickable commands */
 .command-link {
 cursor: pointer;
 }
