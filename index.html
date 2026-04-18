@@ -11,69 +11,60 @@
 
 <div class="terminal" id="terminal"></div>
 
+<div class="input-line">
+  <span>root@0xsaurav-exe:~$</span>&nbsp;
+  <input type="text" id="commandInput" autofocus />
+</div>
+
 <script>
-const lines = [
-  { cmd: "whoami", output: "Cybersecurity Trainee | VAPT | Penetration Testing" },
-  { cmd: "cat about.txt", output: "Passionate cybersecurity enthusiast focused on ethical hacking, vulnerability assessment, and penetration testing." },
-  { cmd: "ls projects/", output: [
-      "network-enumeration-lab",
-      "linux-privilege-escalation",
-      "web-security-testing",
-      "steganography-analysis"
-    ]
-  },
-  { cmd: "contact --info", output: [
-      "Email: sauravsaini31609@gmail.com",
-      "GitHub: github.com/0xsaurav-exe"
-    ]
-  }
-];
+const terminal = document.getElementById("terminal");
+const input = document.getElementById("commandInput");
 
-let terminal = document.getElementById("terminal");
-let lineIndex = 0;
-let charIndex = 0;
-
-function typeLine() {
-  if (lineIndex >= lines.length) return;
-
-  let line = lines[lineIndex];
-  let cmdText = `root@0xsaurav:~$ ${line.cmd}`;
-
-  let p = document.createElement("p");
+function print(text) {
+  const p = document.createElement("p");
+  p.textContent = text;
   terminal.appendChild(p);
-
-  function typeCmd() {
-    if (charIndex < cmdText.length) {
-      p.innerHTML += cmdText.charAt(charIndex);
-      charIndex++;
-      setTimeout(typeCmd, 40);
-    } else {
-      showOutput(line);
-    }
-  }
-
-  typeCmd();
+  window.scrollTo(0, document.body.scrollHeight);
 }
 
-function showOutput(line) {
-  if (Array.isArray(line.output)) {
-    line.output.forEach(item => {
-      let out = document.createElement("p");
-      out.textContent = "> " + item;
-      terminal.appendChild(out);
-    });
-  } else {
-    let out = document.createElement("p");
-    out.textContent = line.output;
-    terminal.appendChild(out);
-  }
+function handleCommand(cmd) {
+  print("root@0xsaurav-exe:~$ " + cmd);
 
-  lineIndex++;
-  charIndex = 0;
-  setTimeout(typeLine, 500);
+  if (cmd === "whoami") {
+    print("0xsaurav-exe");
+  } 
+  else if (cmd === "about") {
+    print("Cybersecurity Trainee focused on VAPT and penetration testing.");
+  } 
+  else if (cmd === "projects") {
+    print("> network-enumeration-lab");
+    print("> linux-privilege-escalation");
+    print("> web-security-testing");
+    print("> steganography-analysis");
+  } 
+  else if (cmd === "contact") {
+    print("LinkedIn: linkedin.com/in/saurav-saini-eh");
+    print("TryHackMe: https://tryhackme.com/p/KillerSourav");
+    print("GitHub: github.com/0xsaurav-exe");
+    print("Email: sauravsaini31609@gmail.com");
+  } 
+  else if (cmd === "clear") {
+    terminal.innerHTML = "";
+  } 
+  else {
+    print("command not found: " + cmd);
+  }
 }
 
-window.onload = typeLine;
+input.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    handleCommand(input.value.trim());
+    input.value = "";
+  }
+});
+
+// Initial message
+print("Type commands: whoami, about, projects, contact, clear");
 </script>
 
 
