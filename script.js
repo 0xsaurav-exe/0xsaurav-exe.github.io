@@ -67,7 +67,7 @@ const logs = [
 ];
 
 for (let i = 0; i < logs.length; i++) {
-await print(logs[i], 8);
+await print(logs[i], 10);
 }
 }
 
