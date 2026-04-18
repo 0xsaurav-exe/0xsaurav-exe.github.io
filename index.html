@@ -9,29 +9,73 @@
 
 <body>
 
-<div class="terminal">
-  <p><span class="green">root@0xsaurav:~$</span> whoami</p>
-  <p>Cybersecurity Trainee | VAPT | Penetration Testing</p>
+<div class="terminal" id="terminal"></div>
 
-  <p><span class="green">root@0xsaurav:~$</span> cat about.txt</p>
-  <p>
-    Passionate cybersecurity enthusiast focused on ethical hacking,
-    vulnerability assessment, and penetration testing.
-  </p>
+<script>
+const lines = [
+  { cmd: "whoami", output: "Cybersecurity Trainee | VAPT | Penetration Testing" },
+  { cmd: "cat about.txt", output: "Passionate cybersecurity enthusiast focused on ethical hacking, vulnerability assessment, and penetration testing." },
+  { cmd: "ls projects/", output: [
+      "network-enumeration-lab",
+      "linux-privilege-escalation",
+      "web-security-testing",
+      "steganography-analysis"
+    ]
+  },
+  { cmd: "contact --info", output: [
+      "Email: sauravsaini31609@gmail.com",
+      "GitHub: github.com/0xsaurav-exe"
+    ]
+  }
+];
 
-  <p><span class="green">root@0xsaurav:~$</span> ls projects/</p>
-  <ul>
-    <li>network-enumeration-lab</li>
-    <li>linux-privilege-escalation</li>
-    <li>web-security-testing</li>
-    <li>steganography-analysis</li>
-  </ul>
+let terminal = document.getElementById("terminal");
+let lineIndex = 0;
+let charIndex = 0;
 
-  <p><span class="green">root@0xsaurav:~$</span> contact --info</p>
-  <p>Email: sauravsaini31609@gmail.com</p>
-  <p>GitHub: github.com/0xsaurav-exe</p>
+function typeLine() {
+  if (lineIndex >= lines.length) return;
 
-</div>
+  let line = lines[lineIndex];
+  let cmdText = `root@0xsaurav:~$ ${line.cmd}`;
+
+  let p = document.createElement("p");
+  terminal.appendChild(p);
+
+  function typeCmd() {
+    if (charIndex < cmdText.length) {
+      p.innerHTML += cmdText.charAt(charIndex);
+      charIndex++;
+      setTimeout(typeCmd, 40);
+    } else {
+      showOutput(line);
+    }
+  }
+
+  typeCmd();
+}
+
+function showOutput(line) {
+  if (Array.isArray(line.output)) {
+    line.output.forEach(item => {
+      let out = document.createElement("p");
+      out.textContent = "> " + item;
+      terminal.appendChild(out);
+    });
+  } else {
+    let out = document.createElement("p");
+    out.textContent = line.output;
+    terminal.appendChild(out);
+  }
+
+  lineIndex++;
+  charIndex = 0;
+  setTimeout(typeLine, 500);
+}
+
+window.onload = typeLine;
+</script>
+
 
 </body>
 </html>
