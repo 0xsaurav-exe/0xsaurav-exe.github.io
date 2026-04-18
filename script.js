@@ -68,7 +68,7 @@ await print("• Linux Privilege Escalation");
 await print("• Web Application Security Testing");
 
 await print(" ");
-}
+
 } else if (cmd === "contact") {
 await loading("[+] Fetching contact", 1000);
 
@@ -81,7 +81,8 @@ await print("GitHub: github.com/0xsaurav-exe");
 await print("Email: sauravsaini31609@gmail.com");
 
 await print(" ");
-}} else if (cmd === "clear") {
+  
+} else if (cmd === "clear") {
 const header = document.getElementById("terminalHeader");
 terminal.innerHTML = "";
 terminal.appendChild(header);
