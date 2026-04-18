@@ -4,21 +4,20 @@ color: #00ff9f;
 font-family: monospace;
 margin: 0;
 padding: 20px;
-text-align: left;
 }
 
-/* terminal container */
+/* terminal */
 #terminal {
 max-width: 900px;
 }
 
-/* glow effect */
+/* glow */
 
 * {
   text-shadow: 0 0 5px #00ff9f;
   }
 
-/* lines */
+/* text lines */
 .line {
 white-space: nowrap;
 }
@@ -27,19 +26,17 @@ white-space: nowrap;
 margin-left: 5px;
 }
 
-/* input line */
+/* input */
 .input-line {
 display: flex;
 align-items: center;
 }
 
-/* prompt */
 .prompt {
 margin-right: 8px;
 white-space: nowrap;
 }
 
-/* input */
 input {
 background: transparent;
 border: none;
@@ -50,26 +47,21 @@ outline: none;
 width: 100%;
 }
 
-/* blinking cursor */
+/* cursor */
 .cursor {
-display: inline-block;
 width: 8px;
 height: 16px;
-background-color: #00ff9f;
-margin-left: 5px;
+background: #00ff9f;
 animation: blink 1s infinite;
 }
 
 @keyframes blink {
-50% {
-opacity: 0;
-}
+50% { opacity: 0; }
 }
 
 /* clickable commands */
 .command-link {
 cursor: pointer;
-color: #00ff9f;
 }
 
 .command-link:hover {
