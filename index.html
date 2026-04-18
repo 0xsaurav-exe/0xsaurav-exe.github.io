@@ -2,71 +2,143 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>0xsaurav | Cybersecurity</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>0xsaurav | Terminal</title>
+
+<style>
+body {
+  background-color: #000814;
+  color: #00ff9f;
+  font-family: monospace;
+  margin: 0;
+  padding: 20px;
+}
+
+#terminal {
+  max-width: 900px;
+  margin: auto;
+}
+
+.line {
+  white-space: nowrap;
+}
+
+.output {
+  margin-left: 5px;
+}
+
+.input-line {
+  display: flex;
+}
+
+.prompt {
+  margin-right: 5px;
+  white-space: nowrap;
+}
+
+input {
+  background: transparent;
+  border: none;
+  color: #00ff9f;
+  font-family: monospace;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+}
+</style>
+
 </head>
 
 <body>
 
-<div class="terminal" id="terminal"></div>
+<div id="terminal">
+  <div>Type commands: whoami, about, projects, contact, clear</div>
+  <br>
+</div>
 
 <div class="input-line">
-  <span>root@0xsaurav-exe:~$</span>&nbsp;
-  <input type="text" id="commandInput" autofocus />
+  <span class="prompt">root@0xsaurav-exe:~$</span>
+  <input id="commandInput" autofocus />
 </div>
 
 <script>
 const terminal = document.getElementById("terminal");
 const input = document.getElementById("commandInput");
 
-function print(text) {
-  const p = document.createElement("p");
-  p.textContent = text;
-  terminal.appendChild(p);
-  window.scrollTo(0, document.body.scrollHeight);
+function printLine(text) {
+  const div = document.createElement("div");
+  div.className = "line";
+  div.innerText = text;
+  terminal.appendChild(div);
 }
 
-function handleCommand(cmd) {
-  print("root@0xsaurav-exe:~$ " + cmd);
+function printOutput(text) {
+  const div = document.createElement("div");
+  div.className = "output";
+  div.innerText = text;
+  terminal.appendChild(div);
+}
 
-  if (cmd === "whoami") {
-    print("0xsaurav-exe");
-  } 
-  else if (cmd === "about") {
-    print("Cybersecurity Trainee focused on VAPT and penetration testing.");
-  } 
-  else if (cmd === "projects") {
-    print("> network-enumeration-lab");
-    print("> linux-privilege-escalation");
-    print("> web-security-testing");
-    print("> steganography-analysis");
-  } 
-  else if (cmd === "contact") {
-    print("LinkedIn: linkedin.com/in/saurav-saini-eh");
-    print("TryHackMe: https://tryhackme.com/p/KillerSourav");
-    print("GitHub: github.com/0xsaurav-exe");
-    print("Email: sauravsaini31609@gmail.com");
-  } 
-  else if (cmd === "clear") {
-    terminal.innerHTML = "";
-  } 
-  else {
-    print("command not found: " + cmd);
-  }
+function space() {
+  const div = document.createElement("div");
+  div.innerHTML = "<br>";
+  terminal.appendChild(div);
 }
 
 input.addEventListener("keydown", function(e) {
   if (e.key === "Enter") {
-    handleCommand(input.value.trim());
+    const cmd = input.value.trim();
+
+    // show command
+    printLine("root@0xsaurav-exe:~$ " + cmd);
+
+    // handle commands
+    switch(cmd) {
+
+      case "whoami":
+        printOutput("0xsaurav-exe");
+        space();
+        break;
+
+      case "about":
+        printOutput("Cybersecurity Trainee focused on VAPT and penetration testing.");
+        space();
+        break;
+
+      case "projects":
+        printOutput("Projects:");
+        printOutput("-------------------------");
+        printOutput("• Network Enumeration Lab");
+        printOutput("• Linux Privilege Escalation");
+        printOutput("• Web Application Security Testing");
+        printOutput("• Steganography Analysis");
+        space();
+        break;
+
+      case "contact":
+        printOutput("Contact:");
+        printOutput("-------------------------");
+        printOutput("LinkedIn: linkedin.com/in/saurav-saini-eh");
+        printOutput("TryHackMe: tryhackme.com/p/KillerSourav");
+        printOutput("GitHub: github.com/0xsaurav-exe");
+        printOutput("Email: sauravsaini31609@gmail.com");
+        space();
+        break;
+
+      case "clear":
+        terminal.innerHTML = "";
+        break;
+
+      default:
+        printOutput("Command not found");
+        space();
+    }
+
     input.value = "";
+    window.scrollTo(0, document.body.scrollHeight);
   }
 });
-
-// Initial message
-print("Type commands: whoami, about, projects, contact, clear");
 </script>
-
 
 </body>
 </html>
