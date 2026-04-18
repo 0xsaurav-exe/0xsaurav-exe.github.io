@@ -52,25 +52,27 @@ terminal.appendChild(div);
 
 }
 
-async function hackerLogs() {
-const logs = [
-"[] Initializing scan...",
-"[] Target acquired: 192.168.0.1",
-"[] Scanning open ports...",
-"[+] Port 22 open (SSH)",
-"[+] Port 80 open (HTTP)",
-"[] Enumerating services...",
-"[] Testing vulnerabilities...",
-"[+] Possible SQL Injection found",
-"[] Attempting privilege escalation...",
-"[+] Access granted ✔"
+async function liveScan() {
+const steps = [
+"Initializing scan",
+"Target acquired: 192.168.0.1",
+"Scanning open ports",
+"Enumerating services",
+"Testing vulnerabilities",
+"Attempting privilege escalation"
 ];
 
-for (let i = 0; i < logs.length; i++) {
-await print(logs[i], 10);
-}
+const div = document.createElement("div");
+terminal.appendChild(div);
+
+for (let i = 0; i < steps.length; i++) {
+div.textContent = "[*] " + steps[i] + "...";
+await new Promise(r => setTimeout(r, 500));
 }
 
+div.textContent = "[+] ACCESS GRANTED ✔";
+}
+  
 // command handler
 async function runCommand(cmd) {
 await print("root@0xsaurav-exe:~$ " + cmd);
@@ -84,7 +86,7 @@ await print("Cybersecurity Trainee focused on VAPT and penetration testing.");
 } else if (cmd === "projects") {
 await loading("[+] Scanning projects", 800);
 
-await hackerLogs(); // 🔥 hacker animation
+await liveScan(); // 🔥 hacker animation
 
 await print(" ");
 await print("=== Projects ===");
