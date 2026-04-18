@@ -4,29 +4,14 @@ const terminal = document.getElementById("terminal");
 const input = document.getElementById("commandInput");
 const form = document.getElementById("terminalForm");
 
-function print(text, speed = 15) {
-return new Promise((resolve) => {
+function print(text) {
 const div = document.createElement("div");
-div.style.marginTop = "6px"; // spacing
+div.style.marginTop = "6px";
+div.innerText = text;
 terminal.appendChild(div);
-
-let i = 0;
-
-function typing() {
-  if (i < text.length) {
-    div.innerText += text.charAt(i);
-    i++;
-    setTimeout(typing, speed);
-  } else {
-    resolve();
-  }
 }
 
-typing();
-
-});
-}
-
+  
 function loading(text = "Scanning", duration = 1000) {
 return new Promise((resolve) => {
 const div = document.createElement("div");
@@ -49,38 +34,38 @@ setTimeout(() => {
 }
   
 async function runCommand(cmd) {
-await print("root@0xsaurav-exe:~$ " + cmd);
+print("root@0xsaurav-exe:~$ " + cmd);
 
 if (cmd === "whoami") {
-await print("0xsaurav-exe");
+print("0xsaurav-exe");
 
 } else if (cmd === "about") {
-await print("Cybersecurity Trainee focused on VAPT and penetration testing.");
+print("Cybersecurity Trainee focused on VAPT and penetration testing.");
 
 } else if (cmd === "projects") {
-await loading("[+] Scanning projects", 1200);
+loading("[+] Scanning projects", 1200);
 
-await print(" ");
-await print("=== Projects ===");
+print(" ");
+print("=== Projects ===");
 
-await print("• Network Enumeration Lab");
-await print("• Linux Privilege Escalation");
-await print("• Web Application Security Testing");
+print("• Network Enumeration Lab");
+print("• Linux Privilege Escalation");
+print("• Web Application Security Testing");
 
-await print(" ");
+print(" ");
 
 } else if (cmd === "contact") {
-await loading("[+] Fetching contact", 1000);
+loading("[+] Fetching contact", 1000);
 
-await print(" ");
-await print("=== Contact ===");
+print(" ");
+print("=== Contact ===");
 
-await print("LinkedIn: linkedin.com/in/saurav-saini-eh");
-await print("TryHackMe: tryhackme.com/p/KillerSourav");
-await print("GitHub: github.com/0xsaurav-exe");
-await print("Email: sauravsaini31609@gmail.com");
+print("LinkedIn: linkedin.com/in/saurav-saini-eh");
+print("TryHackMe: tryhackme.com/p/KillerSourav");
+print("GitHub: github.com/0xsaurav-exe");
+print("Email: sauravsaini31609@gmail.com");
 
-await print(" ");
+print(" ");
   
 } else if (cmd === "clear") {
 const header = document.getElementById("terminalHeader");
@@ -89,7 +74,7 @@ terminal.appendChild(header);
 return;
 
 } else {
-await print("Command not found");
+print("Command not found");
 }
 }form.addEventListener("submit", function (e) {
 e.preventDefault();
