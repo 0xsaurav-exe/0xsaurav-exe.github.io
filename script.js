@@ -107,13 +107,19 @@ space();
 }
 
 input.addEventListener("keydown", function (e) {
-if (e.key === "Enter") {
+if (e.key === "Enter" || e.keyCode === 13) {
 e.preventDefault();
+
+```
 const cmd = input.value.trim();
-if (cmd !== "") {
+
+if (cmd.length === 0) return;
+
 runCommand(cmd);
-}
+
 input.value = "";
+```
+
 }
 });
 
