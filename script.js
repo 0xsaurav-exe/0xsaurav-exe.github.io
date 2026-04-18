@@ -56,41 +56,22 @@ async function liveScan() {
 const div = document.createElement("div");
 terminal.appendChild(div);
 
-const spinner = ["|", "/", "-", "\"];
-let spinIndex = 0;
-let progress = 0;
+const steps = [
+"[] Initializing scan...",
+"[] Target acquired...",
+"[] Scanning ports...",
+"[] Enumerating services...",
+"[] Testing vulnerabilities...",
+"[] Escalating privileges..."
+];
 
-return new Promise((resolve) => {
-
-const interval = setInterval(() => {
-  spinIndex = (spinIndex + 1) % spinner.length;
-
-  div.textContent =
-    `[${spinner[spinIndex]}] Scanning system... ${progress}%`;
-
-}, 100);
-
-function advance() {
-  if (progress >= 100) {
-    clearInterval(interval);
-    div.textContent = "[+] Scan complete ✔";
-    resolve();
-    return;
-  }
-
-  // random progress jump
-  progress += Math.floor(Math.random() * 8) + 1;
-
-  // random delay (realistic)
-  const delay = Math.random() * 200 + 100;
-  setTimeout(advance, delay);
+for (let i = 0; i < steps.length; i++) {
+div.textContent = steps[i];
+await new Promise(r => setTimeout(r, 500));
 }
 
-advance();
-
-});
+div.textContent = "[+] Scan complete ✔";
 }
-
   
 // command handler
 async function runCommand(cmd) {
