@@ -23,7 +23,7 @@ align-items: center;
 .prompt {
 margin-right: 8px;
 white-space: nowrap; /* 🔥 important */
-}}
+}
 
 input {
 background: transparent;
