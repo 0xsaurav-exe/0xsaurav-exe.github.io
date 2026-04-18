@@ -1,5 +1,5 @@
 body {
-background-color: #0d1117;
+background: #0d1117;
 color: #00ff9f;
 font-family: monospace;
 margin: 0;
@@ -7,21 +7,10 @@ margin: 0;
 
 .terminal {
 padding: 40px;
-}
-
-.green {
-color: #00ff9f;
+line-height: 1.6;
+text-shadow: 0 0 5px #00ff9f;
 }
 
 p {
-margin: 10px 0;
-}
-
-ul {
-list-style: none;
-padding-left: 20px;
-}
-
-li::before {
-content: "> ";
+margin: 8px 0;
 }
