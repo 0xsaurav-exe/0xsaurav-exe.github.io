@@ -4,12 +4,14 @@ color: #00ff9f;
 font-family: monospace;
 margin: 0;
 padding: 20px;
+text-align: left;   /* ADD THIS */
 }
 
 #terminal {
 max-width: 900px;
-margin: auto;
+margin: 0;          /* CHANGE this (remove auto) */
 }
+
 
 .line {
 white-space: nowrap;
