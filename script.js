@@ -17,7 +17,7 @@ terminal.appendChild(div);
 
   function typing() {
     if (i < text.length) {
-      div.innerText += text.charAt(i);
+      div.textContent += text.charAt(i);
       i++;
       setTimeout(typing, speed);
     } else {
