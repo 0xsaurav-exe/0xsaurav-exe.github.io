@@ -54,10 +54,6 @@ cursor: pointer;
 text-decoration: underline;
 }
 
-#terminal div {
-white-space: normal;
-}
-
 #terminalHeader {
 white-space: nowrap;
 }
@@ -77,4 +73,8 @@ margin-right: 4px;
 
 .command-link:hover {
 color: #ffffff;
+}
+
+#terminalHeader {
+  white-space: nowrap;
 }
