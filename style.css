@@ -3,14 +3,29 @@ background: #0d1117;
 color: #00ff9f;
 font-family: monospace;
 margin: 0;
+font-size: 18px;
 }
 
 .terminal {
 padding: 40px;
-line-height: 1.6;
-text-shadow: 0 0 5px #00ff9f;
+line-height: 1.8;
+text-shadow: 0 0 6px #00ff9f;
 }
 
 p {
 margin: 8px 0;
+}
+
+.input-line {
+display: flex;
+}
+
+input {
+background: transparent;
+border: none;
+color: #00ff9f;
+font-family: monospace;
+font-size: 18px;
+outline: none;
+width: 100%;
 }
