@@ -4,6 +4,8 @@ color: #00ff9f;
 font-family: monospace;
 margin: 0;
 padding: 20px;
+font-size: 18px;
+
 }
 
 /* terminal */
@@ -42,7 +44,7 @@ background: transparent;
 border: none;
 color: #00ff9f;
 font-family: monospace;
-font-size: 18px;
+font-size: 16px;
 outline: none;
 width: 100%;
 }
