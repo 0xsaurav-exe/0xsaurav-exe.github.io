@@ -22,7 +22,8 @@ align-items: center;
 
 .prompt {
 margin-right: 8px;
-}
+white-space: nowrap; /* 🔥 important */
+}}
 
 input {
 background: transparent;
@@ -54,5 +55,9 @@ text-decoration: underline;
 }
 
 #terminal div {
-white-space: pre;
+white-space: normal;
+}
+
+#terminalHeader {
+white-space: nowrap;
 }
