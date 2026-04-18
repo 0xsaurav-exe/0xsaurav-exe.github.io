@@ -61,3 +61,20 @@ white-space: normal;
 #terminalHeader {
 white-space: nowrap;
 }
+
+#terminalHeader span {
+display: inline;
+}
+
+#terminalHeader {
+white-space: nowrap;
+}
+
+.command-link {
+cursor: pointer;
+margin-right: 4px;
+}
+
+.command-link:hover {
+color: #ffffff;
+}
