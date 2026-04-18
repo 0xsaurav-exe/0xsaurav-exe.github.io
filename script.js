@@ -76,15 +76,15 @@ async function runCommand(cmd) {
 await print("root@0xsaurav-exe:~$ " + cmd);
 
 if (cmd === "whoami") {
-  await print("0xsaurav-exe");
+await print("0xsaurav-exe");
 
 } else if (cmd === "about") {
-  await print("Cybersecurity Trainee focused on VAPT and penetration testing.");
+await print("Cybersecurity Trainee focused on VAPT and penetration testing.");
 
-} } else if (cmd === "projects") {
+} else if (cmd === "projects") {
 await loading("[+] Scanning projects", 800);
 
-await hackerLogs(); // 🔥 NEW
+await hackerLogs(); // 🔥 hacker animation
 
 await print(" ");
 await print("=== Projects ===");
@@ -94,28 +94,29 @@ await print("• Linux Privilege Escalation");
 await print("• Web Application Security Testing");
 
 await print(" ");
-}
 
 } else if (cmd === "contact") {
-  await loading("[+] Fetching contact", 1000);
-  await print(" ");
-  await print("=== Contact ===");
-  await print("LinkedIn: linkedin.com/in/saurav-saini-eh");
-  await print("TryHackMe: tryhackme.com/p/KillerSourav");
-  await print("GitHub: github.com/0xsaurav-exe");
-  await print("Email: sauravsaini31609@gmail.com");
-  await print(" ");
+await loading("[+] Fetching contact", 1000);
+
+await print(" ");
+await print("=== Contact ===");
+
+await print("LinkedIn: linkedin.com/in/saurav-saini-eh");
+await print("TryHackMe: tryhackme.com/p/KillerSourav");
+await print("GitHub: github.com/0xsaurav-exe");
+await print("Email: sauravsaini31609@gmail.com");
+
+await print(" ");
 
 } else if (cmd === "clear") {
-  const header = document.getElementById("terminalHeader");
-  terminal.innerHTML = "";
-  terminal.appendChild(header);
-  return;
+const header = document.getElementById("terminalHeader");
+terminal.innerHTML = "";
+terminal.appendChild(header);
+return;
 
 } else {
-  await print("Command not found");
+await print("Command not found");
 }
-
 }
 
 // form submit (ENTER)
