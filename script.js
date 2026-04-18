@@ -52,6 +52,25 @@ terminal.appendChild(div);
 
 }
 
+async function hackerLogs() {
+const logs = [
+"[] Initializing scan...",
+"[] Target acquired: 192.168.0.1",
+"[] Scanning open ports...",
+"[+] Port 22 open (SSH)",
+"[+] Port 80 open (HTTP)",
+"[] Enumerating services...",
+"[] Testing vulnerabilities...",
+"[+] Possible SQL Injection found",
+"[] Attempting privilege escalation...",
+"[+] Access granted ✔"
+];
+
+for (let i = 0; i < logs.length; i++) {
+await print(logs[i], 10);
+}
+}
+
 // command handler
 async function runCommand(cmd) {
 await print("root@0xsaurav-exe:~$ " + cmd);
@@ -62,14 +81,20 @@ if (cmd === "whoami") {
 } else if (cmd === "about") {
   await print("Cybersecurity Trainee focused on VAPT and penetration testing.");
 
-} else if (cmd === "projects") {
-  await loading("[+] Scanning projects", 1200);
-  await print(" ");
-  await print("=== Projects ===");
-  await print("• Network Enumeration Lab");
-  await print("• Linux Privilege Escalation");
-  await print("• Web Application Security Testing");
-  await print(" ");
+} } else if (cmd === "projects") {
+await loading("[+] Scanning projects", 800);
+
+await hackerLogs(); // 🔥 NEW
+
+await print(" ");
+await print("=== Projects ===");
+
+await print("• Network Enumeration Lab");
+await print("• Linux Privilege Escalation");
+await print("• Web Application Security Testing");
+
+await print(" ");
+}
 
 } else if (cmd === "contact") {
   await loading("[+] Fetching contact", 1000);
