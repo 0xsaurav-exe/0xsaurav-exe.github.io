@@ -1,7 +1,9 @@
+document.addEventListener("DOMContentLoaded", () => {
+
 const terminal = document.getElementById("terminal");
 const input = document.getElementById("commandInput");
 
-/* print command line */
+/* print command */
 function printLine(text) {
 const div = document.createElement("div");
 div.className = "line";
@@ -42,7 +44,7 @@ div.innerHTML = "<br>";
 terminal.appendChild(div);
 }
 
-/* fake loading animation */
+/* loading animation */
 function loading(text = "Scanning", duration = 1000) {
 return new Promise((resolve) => {
 const div = document.createElement("div");
@@ -119,9 +121,10 @@ default:
 window.scrollTo(0, document.body.scrollHeight);
 }
 
-/* enter key */
+/* ENTER key fix */
 input.addEventListener("keydown", function (e) {
 if (e.key === "Enter") {
+e.preventDefault();   // IMPORTANT FIX
 const cmd = input.value.trim();
 runCommand(cmd);
 input.value = "";
@@ -133,4 +136,6 @@ document.querySelectorAll(".command-link").forEach(el => {
 el.addEventListener("click", () => {
 runCommand(el.innerText);
 });
+});
+
 });
