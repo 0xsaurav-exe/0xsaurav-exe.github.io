@@ -117,7 +117,7 @@ if (cmd.length === 0) return;
 
 runCommand(cmd);
 
-input.value = "";
+const input = document.getElementById("commandInput");
 ```
 
 }
