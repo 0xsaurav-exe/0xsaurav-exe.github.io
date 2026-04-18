@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const terminal = document.getElementById("terminal");
 const input = document.getElementById("commandInput");
+const form = document.getElementById("terminalForm");
+
+input.value = "";
 
 function printLine(text) {
 const div = document.createElement("div");
@@ -102,27 +105,28 @@ if (cmd === "whoami") {
 }
 
 space();
+window.scrollTo(0, document.body.scrollHeight);
 ```
 
 }
 
-input.addEventListener("keydown", function (e) {
-if (e.key === "Enter" || e.keyCode === 13) {
+/* ✅ FIXED ENTER HANDLING (FORM BASED) */
+form.addEventListener("submit", function (e) {
 e.preventDefault();
 
 ```
 const cmd = input.value.trim();
 
-if (cmd.length === 0) return;
+if (cmd === "") return;
 
 runCommand(cmd);
 
-const input = document.getElementById("commandInput");
+input.value = "";
 ```
 
-}
 });
 
+/* clickable commands */
 document.querySelectorAll(".command-link").forEach(function (el) {
 el.addEventListener("click", function () {
 runCommand(el.innerText);
